@@ -12,7 +12,7 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    public Department CreateDepartment(Department department){
+    public Department createDepartment(Department department){
         return departmentRepository.save(department);
     }
 
