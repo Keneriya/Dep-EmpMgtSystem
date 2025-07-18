@@ -30,6 +30,7 @@ public class EmployeeController {
         return employeeService.searchByName(name);
     }
 
+
     @GetMapping("/search/department")
     public List<Employee> searchByDepartment(@RequestParam String department) {
         return employeeService.searchByDepartment(department);
@@ -39,6 +40,7 @@ public class EmployeeController {
     public List<Employee> sortByHireDate() {
         return employeeService.sortByHireDate();
     }
+
 
     @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO dto) {

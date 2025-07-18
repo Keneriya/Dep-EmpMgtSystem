@@ -14,12 +14,13 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/create")
+    @PostMapping(value = "/create", consumes = "application/json")
     public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
     }
 
-    @GetMapping("all")
+
+    @GetMapping("/all")
     public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
@@ -34,3 +35,7 @@ public class DepartmentController {
         departmentService.deleteDepartment(id);
     }
 }
+
+
+
+
