@@ -25,6 +25,11 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable Long id) {
+        return employeeService.getEmployeeById(id);
+    }
+
     @GetMapping("/search/name")
     public List<Employee> searchByName(@RequestParam String name) {
         return employeeService.searchByName(name);

@@ -1,6 +1,7 @@
 package com.example.Dep.EmpMgtSystem.Controller;
 
 import com.example.Dep.EmpMgtSystem.Entity.Department;
+import com.example.Dep.EmpMgtSystem.Entity.Employee;
 import com.example.Dep.EmpMgtSystem.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +15,15 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping(value = "/create", consumes = "application/json")
+    @PostMapping("/create")
     public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
     }
 
-
     @GetMapping("/all")
-    public List<Department> getAllDepartments() {
+   public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
-
     @PutMapping("/{id}")
     public Department updateDepartment(@PathVariable Long id, @RequestBody Department department) {
         return departmentService.updateDepartment(id, department);

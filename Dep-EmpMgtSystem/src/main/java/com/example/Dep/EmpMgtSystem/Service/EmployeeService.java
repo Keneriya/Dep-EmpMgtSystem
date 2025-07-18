@@ -38,8 +38,13 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public List<Employee> searchByName(String name) {
-        return employeeRepository.findByNameContainingIgnoreCase(name);
+    public Employee getEmployeeById(Long id) {
+        return employeeRepository.findById(id).orElse(null);
+    }
+
+
+    public List<Employee> searchByName(String deptName) {
+        return employeeRepository.findByDepartment_NameContainingIgnoreCase(deptName);
     }
 
     public List<Employee> searchByDepartment(String deptName) {

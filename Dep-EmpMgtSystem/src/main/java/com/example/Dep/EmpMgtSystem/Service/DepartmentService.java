@@ -12,11 +12,12 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    public Department createDepartment(Department department){
+
+    public Department createDepartment(Department department) {
         return departmentRepository.save(department);
     }
 
-    public List<Department> getAllDepartments() {
+   public List<Department> getAllDepartments() {
         return departmentRepository.findAll();
     }
 
