@@ -8,6 +8,7 @@ import com.example.Dep.EmpMgtSystem.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -27,7 +28,8 @@ public class EmployeeService {
         employee.setEmail(dto.getEmail());
         employee.setPhone(dto.getPhone());
         employee.setPosition(dto.getPosition());
-        employee.setHireDate(dto.getHireDate());
+        // ← set hireDate to “today” on the server’s clock
+        employee.setHireDate(LocalDate.now());
         employee.setDepartment(department);
 
         return employeeRepository.save(employee);

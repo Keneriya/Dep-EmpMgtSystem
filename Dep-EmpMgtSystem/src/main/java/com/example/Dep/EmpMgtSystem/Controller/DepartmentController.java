@@ -4,6 +4,7 @@ import com.example.Dep.EmpMgtSystem.Entity.Department;
 import com.example.Dep.EmpMgtSystem.Entity.Employee;
 import com.example.Dep.EmpMgtSystem.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +16,11 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/create")
+    @PostMapping(
+            path     = "/create",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
     public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
     }

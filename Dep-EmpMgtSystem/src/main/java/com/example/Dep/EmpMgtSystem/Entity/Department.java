@@ -1,5 +1,6 @@
 package com.example.Dep.EmpMgtSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Department {
@@ -23,9 +24,9 @@ public class Department {
 
     private String description;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Employee> employees;
+////    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties("department")
+//    private List<Employee> employees;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -40,9 +41,10 @@ public class Department {
         this.description = description;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees; }
+//    public List<Employee> getEmployees() {
+//        return employees;
+//    }
+//    public void setEmployees(List<Employee> employees) {
+//        this.employees = employees; }
+
 }

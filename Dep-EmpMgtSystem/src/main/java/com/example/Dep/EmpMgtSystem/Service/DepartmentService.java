@@ -14,7 +14,12 @@ public class DepartmentService {
 
 
     public Department createDepartment(Department department) {
-        return departmentRepository.save(department);
+        Department department1=new Department();
+
+        department1.setName(department.getName());
+        department1.setDescription(department.getDescription());
+
+        return departmentRepository.save(department1);
     }
 
    public List<Department> getAllDepartments() {
@@ -33,8 +38,8 @@ public class DepartmentService {
 
     public void deleteDepartment(Long id) {
         Department department = departmentRepository.findById(id).orElse(null);
-        if (department != null && (department.getEmployees() == null || department.getEmployees().isEmpty())) {
+//        if (department != null && (department.getEmployees() == null || department.getEmployees().isEmpty())) {
             departmentRepository.delete(department);
         }
     }
-}
+
