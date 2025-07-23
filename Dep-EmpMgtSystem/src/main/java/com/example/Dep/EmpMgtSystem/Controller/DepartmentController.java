@@ -3,12 +3,13 @@ package com.example.Dep.EmpMgtSystem.Controller;
 import com.example.Dep.EmpMgtSystem.Entity.Department;
 import com.example.Dep.EmpMgtSystem.Entity.Employee;
 import com.example.Dep.EmpMgtSystem.Service.DepartmentService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/departments")
 public class DepartmentController {
@@ -23,6 +24,11 @@ public class DepartmentController {
     )
     public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
+    }
+
+    @GetMapping("/csrf-token")
+    public CsrfToken getCsrfToken(HttpServletRequest request) {
+        return (CsrfToken) request.getAttribute("_csrf");
     }
 
     @GetMapping("/all")
